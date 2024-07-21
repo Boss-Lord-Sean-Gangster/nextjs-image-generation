@@ -1,25 +1,28 @@
 "use client"
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Navbar from '../Navbar'
 import imageData from '../imageData'
+
 const Page = () => {
-const [input, setInput] = useState("");
-const [filteredImages, setFilteredImages] = useState(imageData);
-const [noMatch, setNoMatch] = useState(false);
-const handleChange = (e)=>{
+  const [input, setInput] = useState("");
+  const [filteredImages, setFilteredImages] = useState(imageData);
+  const [noMatch, setNoMatch] = useState(false);
+
+  const handleChange = (e) => {
     setInput(e.target.value)
-}
-const handleSubmit =(e)=>{
-   e.preventDefault();
-   const filtered = imageData.filter(image => image.desc.toLowerCase().includes(input.toLowerCase()));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const filtered = imageData.filter(image => image.desc.toLowerCase().includes(input.toLowerCase()));
     setFilteredImages(filtered);
     setNoMatch(filtered.length === 0);
-}
+  }
 
   return (
     <div>
-        <Navbar/>
-        <div className="flex justify-center mt-[100px]">
+      <Navbar/>
+      <div className="flex justify-center mt-[100px]">
         <input
           type="text"
           placeholder="Explore-Lakeside Quiet House"
@@ -36,7 +39,7 @@ const handleSubmit =(e)=>{
         </button>
       </div>
       <div className='grid place-items-center  grid-cols-3 grid-rows-4 gap-10 mt-10 '>
-      {noMatch ? (
+        {noMatch ? (
           <p className="text-lime-500 text-center col-span-3">No such images created</p>
         ) : (
           filteredImages.map((image) => (
@@ -51,4 +54,4 @@ const handleSubmit =(e)=>{
   )
 }
 
-export default Page
+export default Page;
