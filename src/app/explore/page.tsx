@@ -22,7 +22,7 @@ const handleSubmit =(e)=>{
         <div className="flex justify-center mt-[100px]">
         <input
           type="text"
-          placeholder="Explore ex-Lakeside Quiet House"
+          placeholder="Explore-Lakeside Quiet House"
           value={input}
           onChange={handleChange}
           className="w-[600px] h-10 rounded-lg px-4 bg-black text-lime-500 focus:outline-none"
