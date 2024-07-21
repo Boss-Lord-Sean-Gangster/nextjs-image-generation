@@ -1,27 +1,29 @@
-"use client"
-import React, { useState } from 'react'
-import Navbar from '../Navbar'
-import imageData from '../imageData'
+"use client";
+import React, { useState } from 'react';
+import Navbar from '../Navbar';
+import imageData from '../imageData';
 
-const Page = () => {
+const ExplorePage = () => {
   const [input, setInput] = useState("");
   const [filteredImages, setFilteredImages] = useState(imageData);
   const [noMatch, setNoMatch] = useState(false);
 
   const handleChange = (e) => {
-    setInput(e.target.value)
-  }
+    setInput(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const filtered = imageData.filter(image => image.desc.toLowerCase().includes(input.toLowerCase()));
+    const filtered = imageData.filter(image =>
+      image.desc.toLowerCase().includes(input.toLowerCase())
+    );
     setFilteredImages(filtered);
     setNoMatch(filtered.length === 0);
-  }
+  };
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="flex justify-center mt-[100px]">
         <input
           type="text"
@@ -38,20 +40,20 @@ const Page = () => {
           Submit
         </button>
       </div>
-      <div className='grid place-items-center  grid-cols-3 grid-rows-4 gap-10 mt-10 '>
+      <div className='grid place-items-center grid-cols-3 grid-rows-4 gap-10 mt-10'>
         {noMatch ? (
           <p className="text-lime-500 text-center col-span-3">No such images created</p>
         ) : (
           filteredImages.map((image) => (
             <div key={image.id}>
-              <img src={image.url} alt="image" className='w-[250px] h-[250px] rounded-md border-4 bg-cover border-black' />
+              <img src={image.url} alt={image.desc} className='w-[250px] h-[250px] rounded-md border-4 bg-cover border-black' />
               <p className='text-center w-[250px] font-medium'>{image.desc}</p>
             </div>
           ))
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default Page;
+export default ExplorePage;
