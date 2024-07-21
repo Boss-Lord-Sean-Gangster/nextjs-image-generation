@@ -61,7 +61,7 @@ const Widget = () => {
           autoPlay
           muted
           loop
-          className="absolute top-[-200px] left-0 right-0 w-full h-auto overflow-hidden no-scrollbar z-[-100]"
+          className="absolute top-[-200px] md:top-0 left-0 right-0 w-full h-auto overflow-hidden no-scrollbar z-[-100]"
         />
         {showMessage ? (
           <div className="text-4xl md:text-6xl lg:text-8xl font-bold text-lime-500 mt-[-50px]">
