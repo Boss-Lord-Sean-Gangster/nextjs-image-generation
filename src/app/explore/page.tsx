@@ -2,7 +2,7 @@
 import React,{useState} from 'react'
 import Navbar from '../Navbar'
 import imageData from '../imageData'
-const page = () => {
+const Page = () => {
 const [input, setInput] = useState("");
 const [filteredImages, setFilteredImages] = useState(imageData);
 const [noMatch, setNoMatch] = useState(false);
@@ -51,4 +51,4 @@ const handleSubmit =(e)=>{
   )
 }
 
-export default page
+export default Page
