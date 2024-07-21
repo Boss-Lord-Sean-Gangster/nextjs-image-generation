@@ -53,7 +53,7 @@ const Widget = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center overflow-hidden justify-center h-screen bg-background text-lime-500">
+    <div className="relative flex flex-col items-center overflow-hidden justify-center min-h-screen bg-background text-lime-500 px-4">
       <header className="absolute top-0 left-0 right-0 flex justify-between p-4"></header>
       <div className="text-center mt-[-50px]">
         <video
@@ -61,18 +61,18 @@ const Widget = () => {
           autoPlay
           muted
           loop
-          className="absolute top-[-200px] left-0 right-0 w-full overflow-hidden no-scrollbar z-[-100]"
+          className="absolute top-[-200px] left-0 right-0 w-full h-auto overflow-hidden no-scrollbar z-[-100]"
         />
         {showMessage ? (
-          <div className="text-6xl md:text-8xl font-bold text-lime-500 mt-[-50px]">
+          <div className="text-4xl md:text-6xl lg:text-8xl font-bold text-lime-500 mt-[-50px]">
             TURN YOUR WORDS INTO IMAGINATION
           </div>
         ) : (
           <div className={`${imageSrc ? "hidden" : "block"}`}>
-            <h1 className="text-6xl md:text-8xl font-bold text-lime-500">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-lime-500">
               TURN YOUR WORDS TO
             </h1>
-            <h1 className="text-6xl md:text-8xl font-bold text-lime-500">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-lime-500">
               REALITY
             </h1>
           </div>
@@ -81,37 +81,30 @@ const Widget = () => {
       
       {imageSrc && (
         <div className="mt-8">
-          <img src={imageSrc} alt="Generated" className="w-[400px] h-[400px]" />
+          <img src={imageSrc} alt="Generated" className="w-full max-w-lg h-auto rounded-md" />
         </div>
       )}
-      <div className="flex justify-center mt-[100px]">
+      <div className="flex flex-col md:flex-row justify-center mt-10">
         <input
           type="text"
           placeholder="Create Ex: A Beautiful Sunset"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="w-[600px] h-10 rounded-lg px-4 bg-black focus:outline-none"
+          className="w-full md:w-1/2 lg:w-1/3 h-10 rounded-lg px-4 bg-black text-lime-500 focus:outline-none"
         />
         <button
-          type="submit"
+          type="button"
           onClick={generateImage}
-          className="ml-[-80px] px-4 py-1 bg-black h-10 text-lime-500 rounded-lg hover:bg-lime-600 hover:text-black focus:outline-none"
+          className="mt-4 md:mt-0 md:ml-4 px-4 py-1 bg-black h-10 text-lime-500 rounded-lg hover:bg-lime-600 hover:text-black focus:outline-none"
         >
-          Submit
+          Generate
         </button>
       </div>
       {error && (
-        <div className="text-red-500 mt-4">
+        <div className="mt-4 text-red-500 text-center">
           {error}
         </div>
       )}
-      <footer className="mt-[100px] bottom-0 left-0 right-0 p-4 text-center text-sm font-semibold text-lime-500">
-        <p>
-          Explore our cutting-edge AI image generation tool to create diverse
-          and wonderful images with your text in minutes.
-        </p>
-        <p>In partnership with Ai tools</p>
-      </footer>
     </div>
   );
 };
